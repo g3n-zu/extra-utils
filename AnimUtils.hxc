@@ -1,0 +1,7 @@
+class AnimUtils {
+  public static function offsetPlayAnim(object, anim:String, offset:Array<Int>, ?force:Bool) {
+    object.offset.x = -offset[0];
+    object.offset.y = -offset[1];
+    object.animation.play(anim, force ?? false);
+  }
+}
