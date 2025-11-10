@@ -1,0 +1,17 @@
+{
+  "music": "freeplayRandom",
+  "title": "Gen'z Utils",
+  "description": "Mod description",
+  "contributors": [
+      {
+        "name": "Nebula S. Nova",
+        "icon": "nebula",
+        "color": "#9500ff",
+        "role": "Coder",
+        "url": "https://www.youtube.com/@ChinosModded"
+      }
+  ],
+  "api_version": "0.7.5",
+  "mod_version": "1.0.0",
+  "license": "Apache-2.0"
+}
