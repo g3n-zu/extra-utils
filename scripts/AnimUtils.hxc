@@ -1,7 +1,22 @@
+import flixel.FlxSprite;
+import flixel.animation.FlxAnimationController;
+
 class AnimUtils {
-  public static function offsetPlayAnim(object, anim:String, offset:Array<Int>, ?force:Bool) {
-    object.offset.x = -offset[0];
-    object.offset.y = -offset[1];
-    object.animation.play(anim, force ?? false);
-  }
+
+    public static function offsetPlayAnim(object:FlxSprite, anim:String, offset:Array<Int>, ?force:Bool) {
+        object.offset.x = -offset[0];
+        object.offset.y = -offset[1];
+        object.animation.play(anim, force ?? false);
+    }
+
+    public static function animationFromJson(animation:FlxAnimationController, jsonData:Array) {
+        for (i in jsonData) {
+            if (i.frameIndices.length > 0) {
+                animation.addByIndices(i.name, i.prefix, i.frameIndices, null, i?.frameRate ?? 24, i?.looped ?? false);
+            } else {
+                animation.addByPrefix(i.name, i.prefix, i?.frameRate ?? 24, i?.looped ?? false);
+            }
+        }
+    }
+
 }
