@@ -31,7 +31,6 @@ class SaveUtil {
    * Creates a save with the name you entered.
    * It will error if there is a save slot with that name.
    */
-
     public static function createSave(slot) {
         var save = Save.instance.modOptions;
         if (save.get(slot) == null) {
@@ -48,7 +47,6 @@ class SaveUtil {
    * Writes to the save slot you entered with the.
    * It will error if there save you try to wrtie too does not exist.
    */
-
     public static function writeToSave(slot, data, value) {
         var save = Save.instance.modOptions;
         if (save.get(slot) == null) {
