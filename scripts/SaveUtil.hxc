@@ -1,0 +1,92 @@
+import funkin.save.Save;
+import haxe.ds.StringMap;
+
+class SaveUtil {
+
+    public static function createSlot(slot) {
+        return createSave(slot);
+    }
+
+    public static function writeToSlot(slot, data, value) {
+        return writeToSave(slot, data, value);
+    }
+
+    public static function getFromSlot(slot, data) {
+        return getFromSave(slot, data);
+    }
+
+    public static function checkForSlot(slot) {
+        return checkForSave(slot);
+    }
+
+    public static function clearSlot(slot) {
+        return clearSave(slot);
+    }
+
+    /**
+   * Creates a save with the name you entered.
+   * It will error if there is a save slot with that name.
+   */
+
+    public static function createSave(slot) {
+        var save = Save.instance.modOptions;
+        if (save.get(slot) == null) {
+            trace('Creating Save Slot for: ' + slot);
+            save.set(slot, new StringMap());
+            flush();
+            trace('Save Slot Created for: ' + slot);
+        } else {
+            trace('[ERROR] Save Slot for "'  + slot + '" already exists.' );
+        }
+    }
+
+    
+    /**
+   * Writes to the save slot you entered with .
+   * It will error if there is a save slot with that name.
+   */
+
+    public static function writeToSave(slot, data, value) {
+        var save = Save.instance.modOptions;
+        if (save.get(slot) == null) {
+            trace('[ERROR] Current Save Slot is NULL');
+        } else {
+            trace('Writing to: ' + slot);
+            save.get(slot).set(data, value);
+        }
+    }
+
+    public static function getFromSave(slot, data) {
+        var save = Save.instance.modOptions;
+        if (save.get(slot).get(data) == null) {
+            trace("[ERROR] Can't find Save Data for: " + slot + " => " + data);
+        } else {
+            trace("Found Save Data for: " + slot + " => " + data + " : " + save.get(slot).get(data));
+            return save.get(slot).get(data);
+        }
+    }
+
+    public static function checkForSave(slot) {
+        var save = Save.instance.modOptions;
+        if (save.get(slot) == null) {
+            trace('[ERROR] Could not find Save Slot for: ' + slot);
+        } else {
+            trace('Found Save Flot for ' + slot + ": " + save.get(slot));
+        }
+    }
+
+    public static function clearSave(slot) {
+        var save = Save.instance.modOptions;
+        if (save.get(slot) == null) {
+            trace('There is no Save to clear. ' + slot + " is NULL.");
+        } else {
+            save.set(slot, new StringMap());
+            flush();
+        }
+    }
+
+    public static function flush() {
+        Save.instance.flush();
+    }
+
+}
