@@ -3,6 +3,10 @@ import haxe.ds.StringMap;
 
 class SaveUtil {
 
+    /**
+   * Shortcuts for SaveUtil Functions.
+   */
+
     public static function createSlot(slot) {
         return createSave(slot);
     }
@@ -39,22 +43,26 @@ class SaveUtil {
             trace('[ERROR] Save Slot for "'  + slot + '" already exists.' );
         }
     }
-
     
     /**
-   * Writes to the save slot you entered with .
-   * It will error if there is a save slot with that name.
+   * Writes to the save slot you entered with the.
+   * It will error if there save you try to wrtie too does not exist.
    */
 
     public static function writeToSave(slot, data, value) {
         var save = Save.instance.modOptions;
         if (save.get(slot) == null) {
-            trace('[ERROR] Current Save Slot is NULL');
+            trace('[ERROR] Current Save Slot does not exist');
         } else {
             trace('Writing to: ' + slot);
             save.get(slot).set(data, value);
         }
     }
+   
+    /**
+   * Get a specific data value form the slot and data you entered.
+   * It will error if it can't find information you entered.
+   */
 
     public static function getFromSave(slot, data) {
         var save = Save.instance.modOptions;
@@ -65,6 +73,11 @@ class SaveUtil {
             return save.get(slot).get(data);
         }
     }
+ 
+    /**
+   * Checks is for the save you've entered Will trace all it's contetns to the consol.
+   * It will error if it can't find the Save Slot.
+   */
 
     public static function checkForSave(slot) {
         var save = Save.instance.modOptions;
@@ -74,19 +87,46 @@ class SaveUtil {
             trace('Found Save Flot for ' + slot + ": " + save.get(slot));
         }
     }
+ 
+    /**
+   * Clones the save you've entered to a different slot.
+   * It will error if it can't find the Save Slot or if you try to clone something to the same name.
+   */
+
+    public static function cloneSave(oldSlot, newSlot) {
+        var save = Save.instance.modOptions;
+    }
+
+    /**
+   * Clears the save you've entered.
+   * It will error if it can't find the save slot.
+   */
 
     public static function clearSave(slot) {
         var save = Save.instance.modOptions;
         if (save.get(slot) == null) {
-            trace('There is no Save to clear. ' + slot + " is NULL.");
+            trace('There is no Save to clear. ' + slot + " dies not exists.");
         } else {
             save.set(slot, new StringMap());
             flush();
         }
     }
 
+    /**
+   * Deletes the save slot you've entered.
+   * It will error if it can't find the save you wish to delete.
+   */
+
+    public static function deleteSave(slot) {
+        var save = Save.instance.modOptions;
+    }
+
+    /**
+   * Flushes the Save.
+   * This is needed to make writing to the save possible.
+   */
+
     public static function flush() {
         Save.instance.flush();
     }
-
 }
