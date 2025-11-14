@@ -1,4 +1,5 @@
 import Std;
+import String;
 import Reflect;
 import funkin.save.Save;
 import haxe.ds.StringMap;
@@ -60,7 +61,7 @@ class SaveUtil {
             return;
         }
 
-        if (Reflect.isObject(value) && !Std.isOfType(value, StringMap)) {
+        if (Reflect.isObject(value) && !Std.isOfType(value, StringMap) && !Std.isOfType(value, String)) {
             var map = new StringMap();
             for (field in Reflect.fields(value)) {
                 map.set(field, Reflect.field(value, field));
