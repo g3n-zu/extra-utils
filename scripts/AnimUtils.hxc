@@ -32,7 +32,7 @@ class AnimUtils {
     }
 
     /**
-    * Takes animations from jsonArray and adds them to FlxAnimatioController.    
+    * Takes animations from jsonArray and adds them to FlxAnimationController.    
     */
     public static function animationFromJson(animation:FlxAnimationController, jsonData:Array) {
         for (i in jsonData) {
