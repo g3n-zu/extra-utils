@@ -4,11 +4,11 @@
   "description": "Mod description",
   "contributors": [
     {
-        "name": "GENZU",
-        "icon": "genzu",
-        "color": "#ff9ecf",
-        "roles": "Coder",
-        "url": "https://www.youtube.com/@_genzu"
+      "name": "GENZU",
+      "icon": "genzu",
+      "color": "#ff9ecf",
+      "roles": "Coder",
+      "url": "https://www.youtube.com/@_genzu"
     },
     {
       "name": "Nebula S. Nova",
