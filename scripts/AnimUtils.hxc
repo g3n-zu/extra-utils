@@ -10,7 +10,7 @@ class AnimUtils {
     /**
     * Plays an animation on a character, the right way.
     */
-    public static function charPlayAnim(character:Dynamic, name:String, ?force:Bool) {
+    public static function charPlayAnim(character:BaseCharacter, name:String, ?force:Bool) {
         character.canPlayOtherAnims = true;
         if (!character.ignoreExclusionPref.contains(name))
             character.ignoreExclusionPref.push(name);
