@@ -99,6 +99,7 @@ class SaveUtil {
             return;
         } 
         trace('Found Save Flot for ' + slot + ": " + save.get(slot));
+        return save.get(slot);
     }
 
     /**
